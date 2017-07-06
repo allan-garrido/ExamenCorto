@@ -1,5 +1,8 @@
 package com.umg;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ALLAN GARRIDO on 5/07/2017.
  */
@@ -8,11 +11,11 @@ public class Tienda {
     private String nombreGerente;
     private String direccionTienda;
     private int anioCreacion;
+    private List<Mascota> Mascotas;
 
-    public Tienda(String nombreGerente, String direccionTienda, int anioCreacion) {
-        this.nombreGerente = nombreGerente;
-        this.direccionTienda = direccionTienda;
-        this.anioCreacion = anioCreacion;
+
+    public Tienda() {
+        Mascotas = new ArrayList<>();
     }
 
     public String getNombreGerente() {
@@ -37,5 +40,29 @@ public class Tienda {
 
     public void setAnioCreacion(int anioCreacion) {
         this.anioCreacion = anioCreacion;
+    }
+
+    public List<Mascota> getMascotas() {
+        return Mascotas;
+    }
+
+    public void setMascotas(List<Mascota> mascotas) {
+        Mascotas = mascotas;
+    }
+
+    public void  addMascota(Mascota e) {
+        Mascotas.add(e);
+    }
+
+    public int sumaEdades(String queTipoAnimal){
+        int suma=0;
+
+        for (Mascota m:getMascotas()
+                ) {
+            if (m.getTipoAnimal().equals(queTipoAnimal))
+                suma+=m.getEdadAnimal();
+        }
+
+        return suma;
     }
 }
